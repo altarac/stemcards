@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+      <div class="col-md-6 offset-md-3">
+
+        <div class="card">
+          <h5 class="card-header">Adding 2 monomials <button class="btn btn-dark float-right" onclick="document.location.reload()">New</button></h5>
+          <div class="card-body">
+            <h5 class="card-title">Question</h5>
+
+            <canvas id="myChart" width="400" height="400"></canvas>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [{{x[0]}}, {{x[1]}}, {{x[2]}}, {{x[3]}}, {{x[4]}}, {{x[5]}}, {{x[6]}}, {{x[7]}}, {{x[8]}}, {{x[9]}}],
+
+        datasets: [{
+            label: 'Line 1',
+            data: [{{y1[0]}}, {{y1[1]}}, {{y1[2]}}, {{y1[3]}}, {{y1[4]}}, {{y1[5]}}, {{y1[6]}}, {{y1[7]}}, {{y1[8]}}, {{y1[9]}}],
+            backgroundColor: 'rgba(0, 0, 0, 0)',
+            borderColor: 'rgba(0, 0, 0, 1)',
+        }, {
+            label: 'Line 2',
+            data: [{{y2[0]}}, {{y2[1]}}, {{y2[2]}}, {{y2[3]}}, {{y2[4]}}, {{y2[5]}}, {{y2[6]}}, {{y2[7]}}, {{y2[8]}}, {{y2[9]}}],
+            backgroundColor: 'rgba(0, 0, 0, 0)',
+            borderColor: 'rgba(255, 0, 0, 1)',
+
+            // Changes this dataset to become a line
+            type: 'line'
+        }],
+    },
+    options: {
+        scales: {
+          yAxes: [
+              {
+                  ticks: {
+                      beginAtZero: true,
+                      stepSize: 1,
+                      // max: 10
+                  }
+              }
+          ],
+
+        }
+    }
+
+});
+</script>
+
+            <!-- <a href="#" class="btn btn-warning">Check answer</a> -->
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter2">
+              Check answer
+            </button>
+            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModalCenter">
+              Hint
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Hint</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/R0bGxNzgL2o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal2 -->
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLongTitle">Answer</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  {% if (a1-a2) != 0 %}
+  {% set xint = (b2-b1)/(a1-a2) %}
+  {% set yint = a1*(xint)+b1 %}
+  {% endif %}
+
+{% if (a1-a2) != 0 %} Point of intersection: ({{xint|round(2)}}, {{yint|round(2)}}) {% else %} no point of intersection {% endif %}
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

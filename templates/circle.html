@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+      <div class="col-md-6 offset-md-3">
+
+        <div class="card">
+          <h5 class="card-header">Conics: Formula of a Circle<button class="btn btn-dark float-right" onclick="document.location.reload()">New</button></h5>
+          <div class="card-body">
+            <h5 class="card-title">Question</h5>
+            <p>What is the formula of this circle?
+            <br>
+              <a class="btn btn-outline-secondary btn-sm" onclick="help()">help</a>
+            </p>
+
+            <p>
+
+              <div id="jxgbox" class="jxgbox" style="width:100%; height:400px;">
+
+              </div>
+
+              <script type="text/javascript">
+              var b = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-6, 6, 6, -6], axis:true, KeepAspectRatio:true});
+              var p1 = b.createElement('point',[0,0], {name:'A',size: 4, face: 'o', fixed:true});
+              var p2 = b.createElement('point',[0,0], {name:'B',size: 4, face: 'o', fixed:true});
+              p2.moveTo({{p1}},500)
+              var ci2 = b.createElement('circle',[p1,p2],
+    {strokeWidth:3, dash:2, fillColor:'#ffff00', fillOpacity:0.3});
+
+    function help(){
+              var tape = b.create('tapemeasure', [[0, 2], [2, 2]], {name:'dist'});
+            };
+
+
+              </script>
+
+            </p>
+
+
+            <!-- <a href="#" class="btn btn-warning">Check answer</a> -->
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter2">
+              Check answer
+            </button>
+            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModalCenter">
+              Hint
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Hint</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/6r1GQCxyMKI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal2 -->
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLongTitle">Answer</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+<p>
+Circle:
+</p>
+<p>
+
+$$
+
+x^2+y^2={{p1[0]**2+p1[1]**2}}
+
+$$
+
+</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

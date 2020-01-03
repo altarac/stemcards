@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+      <div class="col-md-6 offset-md-3">
+
+        <div class="card">
+          <h5 class="card-header">Scientific Notation <button class="btn btn-dark float-right" onclick="document.location.reload()">New</button></h5>
+          <div class="card-body">
+            <h5 class="card-title">Question</h5>
+            <p class="card-text">
+              Compute and give the answer in scientific notation.
+              $$
+
+              {{a}}\cdot10^{ {{b}} } \times {{c}}\cdot10^{ {{d}} }
+
+              $$
+
+
+            </p>
+            <!-- <a href="#" class="btn btn-warning">Check answer</a> -->
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter2">
+              Check answer
+            </button>
+            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModalCenter">
+              Hint
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Hint</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/i6lfVUp5RW8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal2 -->
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLongTitle">Answer</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+$$
+{{res[0]}} \times 10^{ {{res[1]}} }
+$$
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

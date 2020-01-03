@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+
+{% endblock %}
+
+
+
+{% block body %}
+
+
+
+
+
+      <div class="col-md-8 offset-md-2">
+
+        <div class="card">
+          <h5 class="card-header">Atoms<button class="btn btn-dark float-right" onclick="document.location.reload()">New</button></h5>
+          <div class="card-body">
+            <h5 class="card-title">Question</h5>
+            <p class="card-text">
+              What is the name of this neutral atom? How many valence electrons does it have?
+              <div class="row">
+                <div class="col-md-6">
+
+                  <canvas id="demoCanvas" width="250" height="250"></canvas>
+                </div>
+
+              </div>
+
+            </p>
+
+
+
+            <!-- <a href="#" class="btn btn-warning">Check answer</a> -->
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter2">
+              Check answer
+            </button>
+            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModalCenter">
+              Hint
+            </button>
+            </div>
+        </div>
+      </div>
+      <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Hint</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/FPk2ziB9iX0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal2 -->
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLongTitle">Answer</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+This is the atom: {{name}} (\( \ce{ {{symb}} } \))
+<br>
+It has {% if r>2 %} {{r-2}} {% else %} {{r}} {% endif %} valence electrons.
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+</div>
+</div>
+</div>
+</div>
+
+<script>
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function ring(x, y, r) {
+  var circle = new createjs.Shape();
+  circle.graphics.beginFill("black").drawCircle(0, 0, r);
+  circle.x = (c.width)/2 + x;
+  circle.y = c.height/2 + y;
+  stage.addChild(circle);
+
+  circle.graphics.beginFill("white").drawCircle(0, 0, r-2);
+  circle.x = (c.width)/2 + x;
+  circle.y = c.height/2 + y;
+  stage.addChild(circle);
+
+  stage.update();
+
+
+}
+
+function circ(x, y, r) {
+  var circle = new createjs.Shape();
+  circle.graphics.beginFill("black").drawCircle(0, 0, r);
+  circle.x = (c.width)/2 + x;
+  circle.y = c.height/2 + y;
+  stage.addChild(circle);
+
+  stage.update();
+
+
+}
+
+function electron(n) {
+  var angle = (360/n);
+
+  for (var i = 0; i < n; i++) {
+
+    var circle = new createjs.Shape();
+    circle.graphics.beginFill("black").drawCircle(0, 0, 5);
+    circle.x = (c.width)/2 + 50*Math.cos(angle*i);
+    circle.y = (c.height/2) + 50*Math.sin(angle*i);
+    stage.addChild(circle);
+
+    stage.update();
+
+  }
+}
+
+function electron2(n) {
+  var angle = (360/n);
+
+  for (var i = 0; i < n; i++) {
+
+    var circle = new createjs.Shape();
+    circle.graphics.beginFill("black").drawCircle(0, 0, 5);
+    circle.x = (c.width)/2 + 100*Math.cos(angle*i);
+    circle.y = (c.height/2) + 100*Math.sin(angle*i);
+    stage.addChild(circle);
+
+    stage.update();
+
+  }
+}
+
+
+
+    var c = document.getElementsByTagName('canvas')[0];
+    var stage = new createjs.Stage("demoCanvas");
+
+    var electronNum = {{r}};
+
+    ring(0, 0, 100);
+    ring(0, 0, 50);
+    circ(0, 0, 10);
+
+    if (electronNum<=2) {
+      electron(electronNum);
+    }
+    else if (electronNum>2) {
+      electron(2);
+      electron2(electronNum-2);
+    }
+
+
+
+
+</script>
+
+
+{% endblock %}

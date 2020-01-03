@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% set v0 = values[0] %}
+{% if values[1]>values[2] %} {% set v1 = values[1] %} {% set v2=values[2] %} {% endif %}
+{% if values[1] < values[2] %} {% set v1 = values[2] %} {% set v2=values[1] %} {% endif %}
+      <div class="col-md-6 offset-md-3">
+
+        <div class="card">
+          <h5 class="card-header">Dilution<button class="btn btn-dark float-right" onclick="document.location.reload()">New</button></h5>
+          <div class="card-body">
+            <h5 class="card-title">Question</h5>
+            <p>
+              Sam needs to dilute {{v0}}mL of an acid from {{v1}}g/L to {{v2}}g/L. To what volume must he fill the beaker?
+            </p>
+
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter2">
+              Check answer
+            </button>
+            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModalCenter">
+              Hint
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Hint</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/v6dnEp58mVk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal2 -->
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLongTitle">Answer</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+$$
+
+  C_1 \cdot V_1 = C_2 \cdot V_2
+  \\\
+  V_2 = \frac{ C_1 \cdot V_1 }{ C_2 }
+  \\\
+  V_2 = \frac{ {{v0}} \cdot {{v1}} }{ {{v2}} }
+  \\\
+
+
+
+  {{(v0 * v1/v2)|round(2)}} mL
+
+
+  $$
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

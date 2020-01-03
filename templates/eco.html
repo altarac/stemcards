@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+
+{% endblock %}
+
+
+
+{% block body %}
+
+
+{% if values2[0] >= values2[1] %} {% set p3 = values2[0] %} {% set p4=values2[1] %} {% endif %}
+{% if values2[0] < values2[1] %} {% set p3 = values2[1] %} {% set p4=values2[0] %} {% endif %}
+{% if values[0] >= values[1] %} {% set p1 = values[0] %} {% set p2=values[1] %} {% endif %}
+{% if values[0] < values[1] %} {% set p1 = values[1] %} {% set p2=values[0] %} {% endif %}
+
+
+
+      <div class="col-md-6 offset-md-3">
+
+        <div class="card">
+          <h5 class="card-header">Population estimation<button class="btn btn-dark float-right" onclick="document.location.reload()">New</button></h5>
+          <div class="card-body">
+            <h5 class="card-title">Question</h5>
+            <p class="card-text">
+              What is the estimated population size if the red dots represent the captured and marked animals?
+              <div class="row">
+                <div style="border-style: solid;" class="col-md-6">
+                  Day 1:
+                  <canvas id="demoCanvas" width="200" height="200"></canvas>
+                </div>
+                <div style="border-style: solid;" class="col-md-6">
+                  Day 5:
+                  <canvas id="demoCanvas2" width="200" height="200"></canvas>
+                </div>
+              </div>
+
+            </p>
+
+            <script>
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+                var stage = new createjs.Stage("demoCanvas");
+
+                for (var i = 1; i <= {{p1}}; i++) {
+                  var circle = new createjs.Shape();
+                  circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 10);
+                  circle.x = getRandomInt(10, 190);
+                  circle.y = getRandomInt(10, 190);
+                  stage.addChild(circle);
+                  stage.update();
+                }
+
+                for (var i = 1; i <= {{p2}}; i++) {
+                  var circle = new createjs.Shape();
+                  circle.graphics.beginFill("red").drawCircle(0, 0, 10);
+                  circle.x = getRandomInt(10, 190);
+                  circle.y = getRandomInt(10, 190);
+                  stage.addChild(circle);
+                  stage.update();
+                }
+
+
+                var stage2 = new createjs.Stage("demoCanvas2");
+
+                for (var i = 1; i <= {{p3}}; i++) {
+                  var circle = new createjs.Shape();
+                  circle.graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, 10);
+                  circle.x = getRandomInt(10, 190);
+                  circle.y = getRandomInt(10, 190);
+                  stage2.addChild(circle);
+                  stage2.update();
+                }
+
+                for (var i = 1; i <= {{p4}}; i++) {
+                  var circle = new createjs.Shape();
+                  circle.graphics.beginFill("red").drawCircle(0, 0, 10);
+                  circle.x = getRandomInt(10, 190);
+                  circle.y = getRandomInt(10, 190);
+                  stage2.addChild(circle);
+                  stage2.update();
+                }
+
+
+            </script>
+
+            <!-- <a href="#" class="btn btn-warning">Check answer</a> -->
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter2">
+              Check answer
+            </button>
+            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModalCenter">
+              Hint
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Hint</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/240806aPHVg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal2 -->
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLongTitle">Answer</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+Estimated population size = {{(p2*p3/p4)|int}}
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}
