@@ -20,6 +20,9 @@
               A box of mass {{m}} Kg is pushed at angle of {{theta}} degrees with the horizontal and a steady force of {{F}} N. It travels a distance of {{d}} meters. How much energy did it take to displace the box?
 
             </p>
+            <div id="canvasHolder">
+
+            </div>
             <!-- <a href="#" class="btn btn-warning">Check answer</a> -->
             <button style="background-color:#FFA066; color:white;" type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter2">
               Check answer
@@ -72,5 +75,77 @@
 </div>
 </div>
 </div>
+<script type="text/javascript">
+
+  let i = 0;
+
+  function setup() {
+
+    var cnv = createCanvas(500, 315);
+    cnv.parent('canvasHolder');
+    background(255, 255, 255);
+    line(0, 120, width, 120);
+
+
+  }
+
+  function draw() {
+    background(255, 255, 255);
+
+    line(0, 120, width, 120);
+
+    rotate(-PI/20);
+
+    line(0, 120, width, 120);
+    let v1 = createVector(120+i, 100);
+    let v2 = createVector(100, 0);
+
+
+    fill(204, 101, 192, 127);
+    stroke(127, 63, 120);
+    rect(40+i, 80, 120, 40);
+
+    drawArrow(v1, v2, 'black');
+    fill(0,0,0);
+    text('{{F}} N', 180+i, 95);
+
+
+
+
+    i+=1;
+    if(i > 150){
+
+      sleep(2000);
+      i=0;
+
+    }
+  }
+
+  function drawArrow(v1, v2, myColor) {
+  push();
+  stroke(myColor);
+  strokeWeight(3);
+  fill(myColor);
+  translate(v1.x, v1.y);
+  line(0, 0, v2.x, v2.y);
+  rotate(v2.heading());
+  let arrowSize = 7;
+  translate(v2.mag() - arrowSize, 0);
+  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
+  pop();
+}
+
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
+
+
+</script>
 
 {% endblock %}
