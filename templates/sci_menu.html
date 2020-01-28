@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header bg-warning text-white font-weight-bold">
+          Earth and Space
+        </div>
+        <div class="card-body">
+          <!-- <h5 class="card-title">Special title treatment</h5> -->
+          <div class="accordion" id="accordionExample2">
+          <p class="card-text">
+              <button class="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#a2">(AST) Select the topic you wish to practice.</button>
+              <div id="a2" class="collapse" data-parent="#accordionExample2">
+              <p>
+                  Coming soon.
+              </p>
+          </div>
+              <button class="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#a1">(ST) Select the topic you wish to practice.</button>
+          </p>
+
+
+
+
+          <div id ='a1' class="list-group collapse show" data-parent="#accordionExample2">
+            <a href="/ES_sec4" class="list-group-item list-group-item-action bg-light">
+              Definitions Flashcards - Sec 4
+            </a>
+            <a href="/permafrost" class="list-group-item list-group-item-action">Permafrost <span><img width = '20px' src='/static/new.svg' /></span>
+            </a>
+            <a href="/salinity" class="list-group-item list-group-item-action">Salinity</a>
+
+
+
+
+            <a href="#" class="list-group-item list-group-item-action disabled" disabled>New options coming soon</a>
+
+          </div>
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header bg-primary text-white font-weight-bold">
+          Material World
+        </div>
+        <div class="card-body">
+          <!-- <h5 class="card-title">Special title treatment</h5> -->
+          <div class="accordion" id="accordionExample">
+          <p class="card-text">
+
+              <button class="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#g2">(AST) Select the topic you wish to practice.</button>
+              <div id="g2" class="collapse" data-parent="#accordionExample">
+              <p>Coming soon</p>
+          </div>
+              <button class="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#g1">(ST) Select the topic you wish to practice.</button>
+
+            </p>
+          <div id='g1' class="list-group collapse show" data-parent="#accordionExample">
+            <a href="/MW_sec4" class="list-group-item list-group-item-action bg-light">
+              Definitions Flashcards - Sec 4
+            </a>
+
+            <a href="/density" class="list-group-item list-group-item-action">Density</a>
+            <a href="/dilution" class="list-group-item list-group-item-action">Dilutions</a>
+            <a href="/concentration" class="list-group-item list-group-item-action">Concentration g/L</a>
+            <a href="/ppm" class="list-group-item list-group-item-action">Concentration PPM</a>
+            <a href="/mv" class="list-group-item list-group-item-action">Concentration %(m/V)</a>
+            <a href="#" class="list-group-item list-group-item-action text-danger">Concentration %(V/V) (coming soon)</a>
+            <a href="#" class="list-group-item list-group-item-action text-danger">Concentration %(m/m) (coming soon)</a>
+            <a href="/stoic" class="list-group-item list-group-item-action">Stoichiometry</a>
+            <a href="/mol" class="list-group-item list-group-item-action">Molar Mass</a>
+            <a href="/chem1" class="list-group-item list-group-item-action">Balancing chemical equations</a>
+            <a href="/nomenclature" class="list-group-item list-group-item-action">Nomenclature</a>
+            <a href="#" class="list-group-item list-group-item-action text-danger">pH Scale (coming soon)</a>
+            <a href="#" class="list-group-item list-group-item-action text-danger">Law of Conservation of Mass (coming soon)</a>
+
+            <a href="#" class="list-group-item list-group-item-action text-danger">Electric Charge (coming soon)</a>
+            <a href="/ohms_law" class="list-group-item list-group-item-action">Ohm's Law (Resistance from graph)<span><img width = '20px' src='/static/new.svg' /></span></a>
+            <a href="/power" class="list-group-item list-group-item-action">Electrical Power</a>
+            <a href="#" class="list-group-item list-group-item-action text-danger">Power ratings and Electrical Energy (coming soon)</a>
+            <a href="#" class="list-group-item list-group-item-action text-danger">Magnetic Forces of Attraction (coming soon)</a>
+            <a href="#" class="list-group-item list-group-item-action text-danger">Right Hand Rule (coming soon)</a>
+            <a href="/ohms" class="list-group-item list-group-item-action">2 resistors in series</a>
+            <a href="/ohms-parallel" class="list-group-item list-group-item-action">2 resistors in parallel</a>
+
+            <a href="/work1" class="list-group-item list-group-item-action">Work Energy</a>
+            <a href="/work2" class="list-group-item list-group-item-action">Work Energy (on slope)</a>
+            <a href="/heat" class="list-group-item list-group-item-action">Heat Energy</a>
+            <a href="/efficiency" class="list-group-item list-group-item-action">Energy Efficiency</a>
+            <a href="/conservation_energy" class="list-group-item list-group-item-action">Law of Conservation of Energy</a>
+
+            <a href="/atom" class="list-group-item list-group-item-action">The Atom</a>
+            <a href="/velocity" class="list-group-item list-group-item-action">Velocity</a>
+            <a href="/force" class="list-group-item list-group-item-action">Force (\(F=ma\))</a>
+            <a href="/energy" class="list-group-item list-group-item-action">Mechanical energy</a>
+            <a href="/pressure" class="list-group-item list-group-item-action">Pressure</a>
+
+
+
+
+
+            <a href="#" class="list-group-item list-group-item-action disabled" disabled>New options coming soon</a>
+
+          </div>
+
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header bg-secondary text-white font-weight-bold">
+          Technological World
+        </div>
+        <div class="card-body">
+          <!-- <h5 class="card-title">Special title treatment</h5> -->
+          <p class="card-text">Select the topic you wish to practice.</p>
+          <div class="list-group">
+            <a href="/TW_sec4" class="list-group-item list-group-item-action bg-light">
+              Definitions Flashcards - Sec 4
+            </a>
+            <a href="/speed_ratio" class="list-group-item list-group-item-action">Speed Ratio (Gears) <span><img width = '20px' src='/static/new.svg' /></span></a>
+            <a href="#" class="list-group-item list-group-item-action text-danger">Factors Influencing Conductivity in a Wire (coming soon)</a>
+
+
+            <a href="#" class="list-group-item list-group-item-action disabled" disabled>New options coming soon</a>
+
+          </div>
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header bg-success text-white font-weight-bold">
+          Living World
+        </div>
+        <div class="card-body">
+          <!-- <h5 class="card-title">Special title treatment</h5> -->
+          <p class="card-text">Select the topic you wish to practice.</p>
+          <div class="list-group">
+            <a disabled href="#" class="list-group-item list-group-item-action bg-light disabled text-danger">
+              Definitions Flashcards - Sec 4 (coming soon)
+            </a>
+            <a href="/eco" class="list-group-item list-group-item-action">Mark-recapture method</a>
+            <a href="/genetics" class="list-group-item list-group-item-action">Punnett Square 1</a>
+
+
+
+            <a href="/eco" class="list-group-item list-group-item-action disabled" disabled>New options coming soon</a>
+
+          </div>
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+{% endblock %}

@@ -7,7 +7,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
 
-
 <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet"/>
 
 
@@ -18,6 +17,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- <style>
+        html, body {
+
+            height: 100%;
+        }
+
+        .dropdown-menu {
+            max-height:800px;
+            overflow-y: scroll;
+            }
+
+
+    </style> -->
+
 
     {% block head %}
 
@@ -43,6 +57,10 @@
               Maths
             </a>
             <div style="background-color:#FFA066" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+
+              <!--<div class="dropdown-divider"></div>-->
+
               <a class="dropdown-item" href="/algeb1">Algebra: adding 2 monomials</a>
               <a class="dropdown-item" href="/linerule">Finding rule of a line </a>
               <a class="dropdown-item" href="/intersection">Finding point of intersection </a>
@@ -50,8 +68,6 @@
               <a class="dropdown-item" href="/pythag">Pythagorean Theorem </a>
               <a class="dropdown-item" href="/scinotation">Scientific Notation </a>
               <a class="dropdown-item" href="/wordprob">Age Word Problems </a>
-
-              <div class="dropdown-divider"></div>
 
               <a class="dropdown-item" href="/factoring1">Factoring</a>
               <a class="dropdown-item" href="/exponential">Functions: Exponential </a>
@@ -63,64 +79,37 @@
             </div>
           </li>
 
-          <li class="nav-item dropdown">
-            <a style="color:#2DC4B6" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Science
-            </a>
-            <div style="background-color:#2DC4B6" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
-            <a class="dropdown-item" href="/atom">Atoms </a>
-              <a class="dropdown-item" href="/density">Density</a>
-              <a class="dropdown-item" href="/force">Force (\(F=ma\)) </a>
-              <a class="dropdown-item" href="/dilution">Dilutions</a>
-              <a class="dropdown-item" href="/energy">Mechanical energy</a>
-              <a class="dropdown-item" href="/pressure">Pressure</a>
-              <a class="dropdown-item" href="/concentration">Concentration</a>
-
-
-
-
-              <div class="dropdown-divider"></div>
-
-
-
-              <a class="dropdown-item" href="/permafrost">Permafrost <span><img width = '20px' src='/static/new.svg' /></span></a>
-              <a class="dropdown-item" href="/chem1">Balancing chemical equations</a>
-              <a class="dropdown-item" href="/nomenclature">Nomenclature </a>
-              <a class="dropdown-item" href="/salinity">Salinity</a>
-              <a class="dropdown-item" href="/ohms">2 resistors in series</a>
-              <a class="dropdown-item" href="/ohms-parallel">2 resistors in parallel</a>
-              <a class="dropdown-item" href="/velocity">Velocity </a>
-              <a class="dropdown-item" href="/work1">Work energy</a>
-              <a class="dropdown-item" href="/work2">Work energy 2</a>
-              <a class="dropdown-item" href="/heat">Heat energy</a>
-              <a class="dropdown-item" href="/efficiency">Energy efficiency </a>
-              <a class="dropdown-item" href="/power">Electrical Power </a>
-              <a class="dropdown-item" href="/stoic">Stoichiometry</a>
-
-              <a class="dropdown-item" href="/mol">Molar mass</a>
-              <a class="dropdown-item" href="/eco">Mark-recapture method</a>
-              <a class="dropdown-item" href="/genetics">Punnett Square 1 </a>
-
-
-              <a style="color:white;"  class="dropdown-item disabled" href="#">New options coming soon</a>
-
-              <!--<a class="dropdown-item disabled" href="#">Another option</a>-->
-            </div>
+          <li class="nav-item active">
+            <a style="color:#2DC4B6" class="nav-link" href="/sci_menu">SciTech </a>
           </li>
+
+          <li class="nav-item dropdown">
+    <a style="color:white;" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">STEM Playbook</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Material World</a>
+      <a class="dropdown-item" href="#">Earth and Space</a>
+      <a class="dropdown-item" href="#">Living World</a>
+      <a class="dropdown-item" href="#">Technological World</a>
+      <!-- <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a> -->
+    </div>
+  </li>
+
+
           <li class="nav-item">
             <a style="color:white;" href="https://drive.google.com/open?id=12N9whzebBuKLD35VM9clOXXKlvCJptr2gN4c8i0VoCI" class="nav-link">Contact</a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-              <input type="hidden" name="cmd" value="_s-xclick" />
-              <input type="hidden" name="hosted_button_id" value="QGZQ4EG5HW8KY" />
-              <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-              <img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />
-              </form>
-            </a>
-          </li>
+
+          <!--<li class="nav-item">-->
+          <!--  <a href="#" class="nav-link">-->
+          <!--    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">-->
+          <!--    <input type="hidden" name="cmd" value="_s-xclick" />-->
+          <!--    <input type="hidden" name="hosted_button_id" value="QGZQ4EG5HW8KY" />-->
+          <!--    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />-->
+          <!--    <img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />-->
+          <!--    </form>-->
+          <!--  </a>-->
+          <!--</li>-->
 
         </ul>
       </div>
@@ -133,7 +122,7 @@
     <!-- {% set n = ['a', 'b'] %} -->
     <div style="background-color:#121212" class="jumbotron jumbotron-fluid">
       <div style="color:#FFFFFF" class="container">
-        <h1 class="display-3">Flash cards</h1>
+        <h1 class="display-3">Study Guide Companion</h1>
         <p class="lead">Master a topic with deliberate practice.</p>
       </div>
     </div>
@@ -164,16 +153,22 @@
         }
       });
     </script>
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <footer class="fixed-bottom footer mt-auto py-3 text-center">
       <div class="container-fluid">
-        <span class="text-muted">Created by Samuel Altarac. Help make this site better with a donation.</span>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_s-xclick" />
-        <input type="hidden" name="hosted_button_id" value="QGZQ4EG5HW8KY" />
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-        <img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />
-        </form>
+        <span class="text-muted">Managed by S. Altarac</span>
+        <!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">-->
+        <!--<input type="hidden" name="cmd" value="_s-xclick" />-->
+        <!--<input type="hidden" name="hosted_button_id" value="QGZQ4EG5HW8KY" />-->
+        <!--<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />-->
+        <!--<img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />-->
+        <!--</form>-->
       </div>
     </footer>
       </body>

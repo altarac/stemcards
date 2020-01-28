@@ -2,25 +2,21 @@
 
 {% block body %}
 
-{% set h1 = values[0] %}
-{% set v1 = values[1] %}
-{% set v2 = values[2] %}
-{% set m = mass %}
-{% set g = 9.8 %}
+
 
       <div class="col-md-6 offset-md-3">
 
         <div class="card">
-          <h5 class="card-header">Mechanical energy<button class="btn btn-dark float-right" onclick="document.location.reload()">New</button></h5>
+          <h5 class="card-header">Speed Ratio (Gears)<button class="btn btn-dark float-right" onclick="document.location.reload()">New</button></h5>
           <div class="card-body">
             <h5 class="card-title">Question</h5>
             <p class="card-text">
 
-              A skateboarder with mass {{m}} Kg drops down a ramp from an initial height of {{h1}} meters. His initial velocity is {{v1}} m/s. What is the total mechanical energy in this system? What is the maximum height the ball will reach?
+              A driver gear has {{q}} equal to {{x}} and a driven gear has {{q}} equal to {{y}}. What is the speed ratio between them?
 
             </p>
-            <div>
-              <iframe src="https://phet.colorado.edu/sims/html/energy-skate-park-basics/latest/energy-skate-park-basics_en.html" width="100%" height="600" scrolling="no" allowfullscreen></iframe>
+            <div id="canvasHolder">
+
             </div>
             <!-- <a href="#" class="btn btn-warning">Check answer</a> -->
             <button style="background-color:#FFA066; color:white;" type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter2">
@@ -43,7 +39,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/lH72gW4ixrE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/D_i3PJIYtuY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -64,10 +60,12 @@
   </button>
 </div>
 <div class="modal-body">
-  Total energy = {{(m*(g*h1+0.5*v1**2))|round(2)}} J
-  <br>
-  Maximum height = {{(m*(g*h1+0.5*v1**2)/(m*g))|round(2)}} meters
+Speed ratio:
+$$
 
+{{ans}}
+
+$$
 
 </div>
 <div class="modal-footer">
@@ -77,9 +75,78 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
+<script type="text/javascript">
+
+  let i = 0;
+
+  function setup() {
+
+    var cnv = createCanvas(500, 315);
+    cnv.parent('canvasHolder');
+    background(255, 255, 255);
+    // line(0, 120, width, 120);
+
+    fill(0,0,0);
+    text('Driver', 175, 100);
+    text('Driven', 175+{{((x+y)/2)*10}}, 100);
+    noFill();
+    circle(175, 100, {{(x)*10}});
+    circle(175+{{((x+y)/2)*10}}, 100, {{(y)*10}});
+
+  }
+
+  // function draw() {
+  //   background(255, 255, 255);
+  //   line(0, 120, width, 120);
+  //   let v1 = createVector(120+i, 100);
+  //   let v2 = createVector(100, 0);
+  //
+  //
+  //   fill(204, 101, 192, 127);
+  //   stroke(127, 63, 120);
+  //   rect(40+i, 80, 120, 40);
+  //
+  //   drawArrow(v1, v2, 'black');
+  //   fill(0,0,0);
+  //   text('{{F}} N', 180+i, 95);
+  //
+  //
+  //
+  //
+  //   i+=1;
+  //   if(i > 150){
+  //
+  //     sleep(2000);
+  //     i=0;
+  //
+  //   }
+  // }
+
+  function drawArrow(v1, v2, myColor) {
+  push();
+  stroke(myColor);
+  strokeWeight(3);
+  fill(myColor);
+  translate(v1.x, v1.y);
+  line(0, 0, v2.x, v2.y);
+  rotate(v2.heading());
+  let arrowSize = 7;
+  translate(v2.mag() - arrowSize, 0);
+  triangle(0, arrowSize / 2, 0, -arrowSize / 2, arrowSize, 0);
+  pop();
+}
+
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
+
+
+</script>
 
 {% endblock %}

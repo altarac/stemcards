@@ -2,26 +2,47 @@
 
 {% block body %}
 
-{% set h1 = values[0] %}
-{% set v1 = values[1] %}
-{% set v2 = values[2] %}
-{% set m = mass %}
-{% set g = 9.8 %}
-
       <div class="col-md-6 offset-md-3">
 
         <div class="card">
-          <h5 class="card-header">Mechanical energy<button class="btn btn-dark float-right" onclick="document.location.reload()">New</button></h5>
+          <h5 class="card-header">Calculating resistance from a graph<button class="btn btn-dark float-right" onclick="document.location.reload()">New</button></h5>
           <div class="card-body">
             <h5 class="card-title">Question</h5>
-            <p class="card-text">
-
-              A skateboarder with mass {{m}} Kg drops down a ramp from an initial height of {{h1}} meters. His initial velocity is {{v1}} m/s. What is the total mechanical energy in this system? What is the maximum height the ball will reach?
+            <p>What is the resistance of the of the applainces whose Voltage vs. Current graphs are shown below ?
+              $$
+              V=I\times{R}
+              $$
 
             </p>
-            <div>
-              <iframe src="https://phet.colorado.edu/sims/html/energy-skate-park-basics/latest/energy-skate-park-basics_en.html" width="100%" height="600" scrolling="no" allowfullscreen></iframe>
-            </div>
+            <p>
+
+              <div id="jxgbox" class="jxgbox" style="width:100%; height:400px;">
+
+              </div>
+
+              <script type="text/javascript">
+              var b = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-1, 80, 15, -10], axis:true, KeepAspectRatio:false, showCopyright:false});
+              p = b.create('point',{{p1}},{size:4,name:'Appliance A', fixed:true});
+              p2 = b.create('point',{{p2}},{size:4,name:'Appliance B', fixed:true});
+              p3 = b.create('point',[10,0],{size:0,name:'Current', fixed:true});
+              p4 = b.create('point',[0,50],{size:0,name:'Voltage', fixed:true});
+              f = b.create('functiongraph', [function(x){return {{a}}*x;}]);
+              g = b.create('functiongraph', [function(x){return {{a2}}*x;}], {dash:2});
+
+
+
+    //           var p1 = b.createElement('point',[0,0], {name:'A',size: 4, face: 'o', fixed:true});
+    //           var p2 = b.createElement('point',[0,0], {name:'B',size: 4, face: 'o', fixed:true});
+    //           p2.moveTo({{p1}},500)
+    //           var ci2 = b.createElement('circle',[p1,p2],
+    // {strokeWidth:3, dash:2, fillColor:'#ffff00', fillOpacity:0.3});
+
+
+              </script>
+
+            </p>
+
+
             <!-- <a href="#" class="btn btn-warning">Check answer</a> -->
             <button style="background-color:#FFA066; color:white;" type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter2">
               Check answer
@@ -43,7 +64,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/lH72gW4ixrE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/ZDALtCd1M-U" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -64,19 +85,19 @@
   </button>
 </div>
 <div class="modal-body">
-  Total energy = {{(m*(g*h1+0.5*v1**2))|round(2)}} J
-  <br>
-  Maximum height = {{(m*(g*h1+0.5*v1**2)/(m*g))|round(2)}} meters
 
+<p>
+  {{sol}}
+</p>
+
+<p>
+  {{sol2}}
+</p>
 
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
   <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
